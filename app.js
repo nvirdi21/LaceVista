@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const homeRoutes = require('./routes/home');
+const homeRoutes = require('./routes/routes');
 
 // Set EJS view engine
 app.set('view engine', 'ejs');
