@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaceVista | Home</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Your Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="white">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo black-text logo-text">LaceVista</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down nav-links">
+      
+      <!-- Home Button Added -->
+      <li><a href="/" class="black-text">Home</a></li>
+
+      <!-- Men with Mega Menu -->
+      <li class="men-mega-menu">
+        <a href="#!" class="black-text">Men <i class="material-icons right">arrow_drop_down</i></a>
+      </li>
+
+      <!-- Women with Mega Menu -->
+      <li class="women-mega-menu">
+        <a href="#!" class="black-text">Women <i class="material-icons right">arrow_drop_down</i></a>
+      </li>
+
+      <!-- About Us -->
+      <li><a href="/about" class="black-text">About Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hidden Mega Menu for Men -->
+<div class="mega-menu-container" id="men-mega-menu">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <img src="/images/allshoes.jpg" alt="Shop All" class="responsive-img">
+        <h6 class="center-align">Shop All</h6>
+      </div>
+      <div class="col s12 m4">
+        <img src="/images/lacevista.jpg" alt="LaceVista" class="responsive-img">
+        <h6 class="center-align">LaceVista</h6>
+      </div>
+      <div class="col s12 m4">
+        <img src="/images/alter.jpg" alt="Alter" class="responsive-img">
+        <h6 class="center-align">Alter</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden Mega Menu for Women -->
+<div class="mega-menu-container" id="women-mega-menu">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <img src="/images/Sneakers.jpg" alt="Sneakers" class="responsive-img">
+        <h6 class="center-align">Sneakers</h6>
+      </div>
+      <div class="col s12 m4">
+        <img src="/images/heels.jpg" alt="Heels" class="responsive-img">
+        <h6 class="center-align">Heels</h6>
+      </div>
+      <div class="col s12 m4">
+        <img src="/images/alterw.jpg" alt="Alter" class="responsive-img">
+        <h6 class="center-align">Alter</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Mega Menu Activation Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menMenuTrigger = document.querySelector('.men-mega-menu');
+    const womenMenuTrigger = document.querySelector('.women-mega-menu');
+    const menMegaMenu = document.getElementById('men-mega-menu');
+    const womenMegaMenu = document.getElementById('women-mega-menu');
+
+    menMenuTrigger.addEventListener('mouseenter', () => {
+      menMegaMenu.style.display = 'block';
+      womenMegaMenu.style.display = 'none';
+    });
+
+    womenMenuTrigger.addEventListener('mouseenter', () => {
+      womenMegaMenu.style.display = 'block';
+      menMegaMenu.style.display = 'none';
+    });
+
+    menMegaMenu.addEventListener('mouseleave', () => {
+      menMegaMenu.style.display = 'none';
+    });
+
+    womenMegaMenu.addEventListener('mouseleave', () => {
+      womenMegaMenu.style.display = 'none';
+    });
+
+    menMenuTrigger.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        if (!menMegaMenu.matches(':hover')) {
+          menMegaMenu.style.display = 'none';
+        }
+      }, 300);
+    });
+
+    womenMenuTrigger.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        if (!womenMegaMenu.matches(':hover')) {
+          womenMegaMenu.style.display = 'none';
+        }
+      }, 300);
+    });
+  });
+</script>
+
+</body>
+</html>
