@@ -1,0 +1,183 @@
+.logo-text {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 55px;
+  letter-spacing: 1px;
+  color: #0d47a1;
+  padding-left: 20px;
+}
+
+nav .brand-logo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-section {
+  background: url('/images/background.jpg') no-repeat center center/cover;
+  height: 90vh;
+  position: relative;
+  color: white;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-top: 1rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content h4 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.buttons .btn {
+  font-weight: bold;
+  padding: 14px 28px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Product Card Styling */
+.card-image {
+  overflow: hidden;
+}
+
+.card-image img {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.card-image:hover img {
+  transform: scale(1.3); /* Zoom in 30% on hover */
+}
+
+.card {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Inspiration Banner Styling */
+.inspiration-banner {
+  background: linear-gradient(90deg, #0d47a1, #699a1b); /* Smooth brand blue to purple gradient */
+  padding: 40px 20px;
+}
+
+.inspiration-text {
+  font-weight: bold;
+  color: white;
+}
+
+.highlighted-text {
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  transform: skewX(-10deg);
+  display: inline-block;
+}
+
+/* Updated Policy Section Styling */
+.policy-section {
+  background-color: #bbdefb; /* Slightly stronger light blue */
+  padding: 40px 20px;
+}
+
+.policy-section h5 {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #0d47a1;
+}
+
+.policy-section p {
+  color: #333333;
+  font-size: 14px;
+}
+
+.policy-section .material-icons {
+  color: #1565c0;
+  font-size: 48px;
+}
+
+.mega-menu-container {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  padding: 50px 0;
+  position: absolute;
+  top: 64px; /* Same as navbar height */
+  z-index: 1000;
+}
+
+.mega-menu-container img {
+  width: 100%;
+  height: 300px; /* UPDATED: bigger image height (was 220px or 250px before) */
+  object-fit: cover; /* Make image fill nicely */
+  margin-bottom: 10px; /* Space between image and text */
+  border-radius: 8px; /* Optional: Make images slightly rounded if you want */
+}
+
+.mega-menu-container h6 {
+  font-weight: bold;
+  color: #000;
+}
+
+.mega-menu-container img {
+  width: 100%;
+  height: 250px; /* Fixed height for dropdown images */
+  object-fit: cover; /* Crop nicely without stretching */
+  border-radius: 10px; /* (Optional) Slight rounded corners for better design */
+}
+
+.about-banner {
+  background: linear-gradient(to right, #2193b0, #6dd5ed); /* Light blue gradient */
+  padding: 60px 20px;
+  color: white;
+}
+
+.about-heading {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.about-subheading {
+  font-size: 1.5rem;
+}
+
+.about-section h4 {
+  color: #0d47a1;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.about-section p, .about-section ul {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about-section ul li {
+  margin: 8px 0;
+}
+
+
+.page-footer .container {
+  text-align: center;
+}
