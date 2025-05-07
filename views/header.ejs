@@ -92,6 +92,11 @@
 <!-- Materialize JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+ <!-- Page-specific JS -->
+ <% if (typeof script !== 'undefined') { %>
+  <script src="/js/<%= script %>.js"></script>
+<% } %>
+
 <!-- Mega Menu Activation Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -135,6 +140,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>

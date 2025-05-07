@@ -1,0 +1,161 @@
+<%- include('header') %>
+
+
+  <title>Shop Men</title>
+  <section class="shop-hero-section center-align">
+    <h2 class="about-heading">Step Forward with LaceVista</h2>
+    <p class="about-subheading">Where Comfort Meets Confidence</p>
+  </section>
+
+  <!-- Filter sidenav  -->
+  <section class="shop-all-section shop-heading">
+    <span>Shop All</span>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i><p>Filter</p></a>
+
+    <ul id="slide-out" class="sidenav">
+      <li><h4 class="sidenav-heading">Filter</h4></li>
+      <li><div class="divider"></div></li>
+      <div class="sidenav-filter-option">
+       
+     <!-- Size Filter -->
+     <div class="input-field col s12 m6">
+      <span class="filter-label">Size</span>
+
+      <select id="size-filter">
+        <option value="" disabled selected>Choose your size</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+         <!-- Color Filter -->
+    <div class="input-field col s12 m6">
+      <span class="filter-label">Color</span>
+
+      <select id="color-filter">
+        <option value="" disabled selected>Choose a color</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </select>
+    </div>
+          <!-- Price Filter -->
+          <div class="col s12 m6">
+            <span class="filter-label">Max Price ($)</span>
+            <p class="range-field" style="margin-bottom: 0;">
+              <input type="range" id="price" min="0" max="500" value="250" oninput="updatePriceValue(this.value)">
+            </p>
+            <div class="flex" style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+              <span>$0</span>
+              <span id="price-value">$250</span>
+              <span>$500</span>
+            </div>
+          </div>
+     <!-- Category Filter -->
+     <div class="input-field col s12 m6">
+      <span class="filter-label">Category</span>
+
+      <select id="category-filter">
+        <option value="" disabled selected>Select category</option>
+        <option value="sneakers">Sneakers</option>
+        <option value="formal">Formal</option>
+        <option value="boots">Boots</option>
+        <option value="sports">Sports</option>
+      </select>
+    </div>
+      </div>
+      
+    </ul>
+  </section>
+  <div class="divider"></div>
+
+  <section class="all-product-list-section">
+    
+     <div class="row">
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="/images/shoe1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <p>$ 180/-</p>
+            <a class="btn-small waves-effect waves-light "><i class="material-icons">add</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="/images/shoe1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <p>$ 180/-</p>
+            <a class="btn-small waves-effect waves-light "><i class="material-icons">add</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="/images/shoe1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <p>$ 180/-</p>
+            <a class="btn-small waves-effect waves-light "><i class="material-icons">add</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="/images/shoe1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <p>$ 180/-</p>
+            <a class="btn-small waves-effect waves-light "><i class="material-icons">add</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="/images/shoe1.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <p>$ 180/-</p>
+            <a class="btn-small waves-effect waves-light "><i class="material-icons">add</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+              
+  </section>
