@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const shopController = require('../controllers/shopController')
 
 // Home Page
 router.get('/', (req, res) => {
@@ -7,9 +8,7 @@ router.get('/', (req, res) => {
 });
 
 // Shop Page
-router.get('/shop', (req, res) => {
-  res.render('shop');
-});
+router.get('/shop',  shopController.getShop);
 
 // About Us Page 
 router.get('/about', (req, res) => {

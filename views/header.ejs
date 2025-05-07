@@ -16,6 +16,11 @@
 
   <!-- Your Custom CSS -->
   <link rel="stylesheet" href="/css/style.css">
+
+   <!-- Page-specific stylesheet -->
+   <% if (typeof stylesheet !== 'undefined') { %>
+    <link rel="stylesheet" href="/css/<%= stylesheet %>.css">
+  <% } %>
 </head>
 <body>
 
