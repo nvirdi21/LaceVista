@@ -1,0 +1,75 @@
+<%- include('header') %>
+
+<section class="container">
+    <h4 class="center-align">Shopping Cart</h4>
+  <div class="row">
+    <!-- Left Column: Cart Items -->
+    <div class="col s12 m7">
+      <% cartItems.forEach(item => { %>
+        <div class="cart-item row valign-wrapper">
+            
+          <div class="col s3">
+            <img src="<%= item.image %>" alt="<%= item.name %>" class="responsive-img">
+          </div>
+          <div class="col s9">
+            <div class="row-class">
+                <div>
+            <div class="product-title"><%= item.name %></div>
+            <div>
+              <% if (item.originalPrice) { %>
+                <span class="original-price">$<%= item.originalPrice %></span>
+              <% } %>
+              <span class="price">$<%= item.price %></span>
+            </div>
+            </div>
+            <div class="row s2 right-align">
+                <form action="/cart/remove" method="POST">
+                  <input type="hidden" name="id" value="<%= item.id %>">
+                  <button class="btn-flat red-text"><i class="material-icons ">delete</i></button>
+                </form>
+              </div>
+            </div>
+            <div class="row" style="margin: 20px 0px;">
+              <div class="col s3">
+                <span>Color:</span> <%= item.color %>
+              </div>
+              <div class="col s2">
+                <span>Size:</span> <%= item.size %>
+              </div>
+              </div>
+          <div class="row" style="margin: 0 20px;">
+              <div class="row s1 quantity-box">
+                <p>Quantity:</p>
+                <form action="/cart/update" method="POST">
+                    <div class="quantity-form">
+                  <input type="hidden" name="id" value="<%= item.id %>">
+                  <button class="btn-flat btn-small" type="submit" name="quantity" value="<%= item.quantity - 1 %>">-</button>
+                  <input type="number" name="quantity"  value="<%= item.quantity %>" min="1">
+                  <button class="btn-flat btn-small" type="submit" name="quantity" value="<%= item.quantity + 1 %>">+</button>
+                    </div>
+                </form>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <!-- Right Column: Summary -->
+    <div class="col s12 m5">
+      <div class="summary-box">
+        <ul>
+          <% cartItems.forEach(item => { %>
+            <li><%= item.name %> - $<%= item.price %></li>
+          <% }) %>
+        </ul>
+        <hr>
+        <p><strong>Sales Tax:</strong> Included</p>
+        <h5><strong>Total: $<%= totalCost.toFixed(2) %></strong></h5>
+        <a href="/checkout" class="btn checkout-btn">PROCEED TO CHECKOUT</a>
+      </div>
+    </div>
+  </div>
+
+</section>
