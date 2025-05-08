@@ -1,19 +1,33 @@
 const express = require('express');
 const router = express.Router();
 
-// Home Page
+
 router.get('/', (req, res) => {
   res.render('home');
 });
 
-// Shop Page
-router.get('/shop', (req, res) => {
-  res.render('shop');
+
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
-// About Us Page 
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+
+router.post('/register', (req, res) => {
+  console.log(req.body); 
+  res.redirect('/login'); 
+});
+
 router.get('/about', (req, res) => {
   res.render('about');
+});
+
+router.get('/shop', (req, res) => {
+  res.render('shop');
 });
 
 module.exports = router;
