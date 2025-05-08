@@ -5,46 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LaceVista | Home</title>
 
-  <!-- Materialize CSS -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 
-  <!-- Google Fonts -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Material Icons -->
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Your Custom CSS -->
+  
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<!-- Navbar -->
+
 <nav class="white">
   <div class="nav-wrapper">
     <a href="/" class="brand-logo black-text logo-text">LaceVista</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down nav-links">
       
-      <!-- Home Button Added -->
+      <li><a href="/login" class="black-text">Login</a></li> 
+     
+      
       <li><a href="/" class="black-text">Home</a></li>
 
-      <!-- Men with Mega Menu -->
+      
       <li class="men-mega-menu">
         <a href="#!" class="black-text">Men <i class="material-icons right">arrow_drop_down</i></a>
       </li>
 
-      <!-- Women with Mega Menu -->
+      
       <li class="women-mega-menu">
         <a href="#!" class="black-text">Women <i class="material-icons right">arrow_drop_down</i></a>
       </li>
 
-      <!-- About Us -->
+      
       <li><a href="/about" class="black-text">About Us</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- Hidden Mega Menu for Men -->
+
 <div class="mega-menu-container" id="men-mega-menu">
   <div class="container">
     <div class="row">
@@ -64,7 +66,7 @@
   </div>
 </div>
 
-<!-- Hidden Mega Menu for Women -->
+
 <div class="mega-menu-container" id="women-mega-menu">
   <div class="container">
     <div class="row">
@@ -84,10 +86,10 @@
   </div>
 </div>
 
-<!-- Materialize JS -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<!-- Mega Menu Activation Script -->
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const menMenuTrigger = document.querySelector('.men-mega-menu');
