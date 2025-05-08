@@ -1,3 +1,64 @@
+.login-page {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.styled-login-box {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.styled-login-box h5 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.lacevista-brand {
+  color: #0d47a1;
+  font-weight: bold;
+}
+
+.input-field input {
+  border-bottom: 1px solid #999 !important;
+}
+
+
+.social-login {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.login-main-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  line-height: 1;
+}
+
+.social-login .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  font-size: 13px;
+  line-height: 1;
+}
+
 .logo-text {
   font-family: 'Great Vibes', cursive;
   font-weight: 400;
@@ -51,7 +112,7 @@ nav .brand-logo {
   justify-content: center;
 }
 
-/* Product Card Styling */
+
 .card-image {
   overflow: hidden;
 }
@@ -64,7 +125,7 @@ nav .brand-logo {
 }
 
 .card-image:hover img {
-  transform: scale(1.3); /* Zoom in 30% on hover */
+  transform: scale(1.3);
 }
 
 .card {
@@ -74,9 +135,9 @@ nav .brand-logo {
   justify-content: space-between;
 }
 
-/* Inspiration Banner Styling */
+
 .inspiration-banner {
-  background: linear-gradient(90deg, #0d47a1, #699a1b); /* Smooth brand blue to purple gradient */
+  background: linear-gradient(90deg, #0d47a1, #699a1b);
   padding: 40px 20px;
 }
 
@@ -93,9 +154,9 @@ nav .brand-logo {
   display: inline-block;
 }
 
-/* Updated Policy Section Styling */
+
 .policy-section {
-  background-color: #bbdefb; /* Slightly stronger light blue */
+  background-color: #bbdefb;
   padding: 40px 20px;
 }
 
@@ -106,7 +167,7 @@ nav .brand-logo {
 }
 
 .policy-section p {
-  color: #333333;
+  color: #333;
   font-size: 14px;
 }
 
@@ -115,6 +176,7 @@ nav .brand-logo {
   font-size: 48px;
 }
 
+
 .mega-menu-container {
   width: 100%;
   background: #ffffff;
@@ -122,16 +184,16 @@ nav .brand-logo {
   display: none;
   padding: 50px 0;
   position: absolute;
-  top: 64px; /* Same as navbar height */
+  top: 64px;
   z-index: 1000;
 }
 
 .mega-menu-container img {
   width: 100%;
-  height: 300px; /* UPDATED: bigger image height (was 220px or 250px before) */
-  object-fit: cover; /* Make image fill nicely */
-  margin-bottom: 10px; /* Space between image and text */
-  border-radius: 8px; /* Optional: Make images slightly rounded if you want */
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .mega-menu-container h6 {
@@ -139,15 +201,9 @@ nav .brand-logo {
   color: #000;
 }
 
-.mega-menu-container img {
-  width: 100%;
-  height: 250px; /* Fixed height for dropdown images */
-  object-fit: cover; /* Crop nicely without stretching */
-  border-radius: 10px; /* (Optional) Slight rounded corners for better design */
-}
 
 .about-banner {
-  background: linear-gradient(to right, #2193b0, #6dd5ed); /* Light blue gradient */
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
   padding: 60px 20px;
   color: white;
 }
@@ -167,7 +223,8 @@ nav .brand-logo {
   margin-top: 30px;
 }
 
-.about-section p, .about-section ul {
+.about-section p,
+.about-section ul {
   color: #333;
   font-size: 16px;
   line-height: 1.6;
@@ -176,7 +233,6 @@ nav .brand-logo {
 .about-section ul li {
   margin: 8px 0;
 }
-
 
 .page-footer .container {
   text-align: center;
