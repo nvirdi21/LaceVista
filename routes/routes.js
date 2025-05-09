@@ -6,28 +6,15 @@ router.get('/', (req, res) => {
   res.render('home');
 });
 
+// Shop Page
+router.get('/shop',  shopController.getShop);
 
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-
-router.post('/register', (req, res) => {
-  console.log(req.body); 
-  res.redirect('/login'); 
-});
+// Cart Page
+router.get('/cart',  cartController.getCartPage);
 
 router.get('/about', (req, res) => {
   res.render('about');
 });
 
-router.get('/shop', (req, res) => {
-  res.render('shop');
-});
 
 module.exports = router;
