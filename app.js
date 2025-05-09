@@ -1,4 +1,6 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const pagesRoutes = require('./routes/pagesRoutes');
@@ -7,22 +9,25 @@ const shopRoutes = require('./routes/shopRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 
 // Middleware
-// app.use(express.json());
+app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // View engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Middleware
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());cls
-// app.use(bodyParser.json());
+app.set(express.static('public'));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-// app.use('/', homeRoutes); // ✅ Handles all pages + /api/chat
+// MongoDB Connection
+mongoose.connect('mongodb://localhost:27017/LaceVista', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log('MongoDB Connected'))
+  .catch(err => console.error(err));
+
 
 // Route mounting
 app.use('/', authRoutes);
