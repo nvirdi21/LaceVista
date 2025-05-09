@@ -1,4 +1,7 @@
 // Cart Page
+// routes/pagesRoutes.js
+const express = require('express');
+const router  = express.Router();
 router.get('/cart',  cartController.getCartPage);
 
 router.get('/about', (req, res) => {
