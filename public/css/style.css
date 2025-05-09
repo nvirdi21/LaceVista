@@ -240,6 +240,51 @@ nav .brand-logo {
   margin: 8px 0;
 }
 
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+#chat-header {
+  background-color: #0d47a1;
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+#chat-body {
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat-messages {
+  padding: 10px;
+  height: 260px;
+  overflow-y: auto;
+}
+
+.chat-input-row {
+  display: flex;
+  padding: 0 10px 10px 10px;
+}
+
+#chat-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+
 .page-footer .container {
   text-align: center;
 }
