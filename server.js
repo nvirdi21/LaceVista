@@ -1,19 +1,23 @@
-require('dotenv').config();
 const express = require('express');
-const connectDB = require('./config/db');
-
+const app = express();
+const pagesRoutes   = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 
-const app = express();
+// Middleware
 app.use(express.json());
-app.use(require('cors')());
+app.use(express.urlencoded({ extended: true }));
 
-connectDB();
+// View Engine (if using EJS etc.)
+app.set('view engine', 'ejs');
 
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/cart', cartRoutes);
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+// Route mounting
+app.use('/', authRoutes);
+app.use('/', productRoutes);
+app.use('/', cartRoutes);
+app.use('/', productRoutes);
+
+
+app.listen(5000, () => console.log('Server started on port 5000'));
