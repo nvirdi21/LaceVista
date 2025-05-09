@@ -16,7 +16,6 @@
 <section class="container section">
   <h4 class="center-align" style="margin-bottom: 2rem;">Our Collection</h4>
   <div class="row">
-    <!-- First Product -->
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -29,7 +28,6 @@
       </div>
     </div>
 
-    <!-- Second Product -->
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -42,7 +40,6 @@
       </div>
     </div>
 
-    <!-- Third Product -->
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -55,7 +52,6 @@
       </div>
     </div>
 
-    <!-- Fourth Product -->
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -67,7 +63,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -81,21 +76,16 @@
 <section class="policy-section">
   <div class="container">
     <div class="row center-align">
-      
-      <!-- Free Shipping -->
       <div class="col s12 m4">
         <i class="material-icons large">local_shipping</i>
         <h5>Free Shipping</h5>
         <p>Free shipping for all orders.</p>
       </div>
-      <!-- Cash on Delivery -->
       <div class="col s12 m4">
         <i class="material-icons large">attach_money</i>
         <h5>Cash on Delivery</h5>
         <p>Cash on delivery at zero cost.</p>
       </div>
-
-      <!-- Easy Return -->
       <div class="col s12 m4">
         <i class="material-icons large">autorenew</i>
         <h5>Easy Return</h5>
@@ -105,8 +95,46 @@
   </div>
 </section>
 
+<!-- ✅ Chatbot Widget -->
+<div id="chat-widget" class="z-depth-3">
+  <div id="chat-header" onclick="toggleChat()">
+    💬 LaceBot
+  </div>
+  <div id="chat-body" style="display: none;">
+    <div id="chat-messages"></div>
+    <div class="input-field chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask something..." />
+      <button onclick="sendChat()" class="btn-small blue darken-2">Send</button>
+    </div>
+  </div>
+</div>
 
 
+<script>
+  function toggleChat() {
+    const body = document.getElementById("chat-body");
+    body.style.display = body.style.display === "none" ? "block" : "none";
+  }
 
+  async function sendChat() {
+    const input = document.getElementById("chat-input");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const messagesDiv = document.getElementById("chat-messages");
+    messagesDiv.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+    input.value = '';
+
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+
+    const data = await response.json();
+    messagesDiv.innerHTML += `<div><strong>LaceBot:</strong> ${data.reply}</div>`;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+</script>
 
 <%- include('footer') %>
