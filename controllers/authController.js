@@ -55,3 +55,26 @@ exports.createUser = async (req, res) => {
       : 'Server Error');
   }
 };
+
+
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    console.log('Login Input:', req.body);
+    const userFind = await User.findOne({ email });
+    console.log('Found:', userFind);
+    if (userFind && userFind.password === password) {
+      console.log('Validated:', userFind);
+      req.session.user = userFind;
+      res.redirect('shop'); // Redirect to shop or home page
+    } else {
+      res.render('login', { error: 'Invalid email or password' });
+    }
+  }
+  catch (err) {
+    console.error('Login Error:', err);
+    res.render('login', { error: 'Something went wrong. Please try again.' });
+  }
+};
+
+// cls

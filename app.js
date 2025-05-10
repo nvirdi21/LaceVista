@@ -7,6 +7,14 @@ const pagesRoutes = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const shopRoutes = require('./routes/shopRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const session = require('express-session'); // session
+
+app.use(session({
+  secret: 'LaceVista@2025', 
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 // Middleware
 app.use(express.json());
@@ -23,8 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
 mongoose.connect('mongodb://localhost:27017/LaceVista', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.error(err));
 
@@ -32,7 +38,7 @@ mongoose.connect('mongodb://localhost:27017/LaceVista', {
 // Route mounting
 app.use('/', authRoutes);
 app.use('/', shopRoutes);
-// app.use('/', cartRoutes);
+app.use('/', cartRoutes);
 app.use('/', pagesRoutes);
 
 
