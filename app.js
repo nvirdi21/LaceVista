@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Route mounting
 app.use('/', authRoutes);
 app.use('/', shopRoutes);
-// app.use('/', cartRoutes);
+ app.use('/', cartRoutes);
 app.use('/', pagesRoutes);
 
 
