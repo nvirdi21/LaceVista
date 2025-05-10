@@ -39,7 +39,6 @@ mongoose.connect('mongodb://localhost:27017/LaceVista', {
 app.use('/', authRoutes);
 app.use('/', shopRoutes);
 app.use('/', cartRoutes);
- app.use('/', cartRoutes);
 app.use('/', pagesRoutes);
 
 
