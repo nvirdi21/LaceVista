@@ -1,13 +1,13 @@
 <%- include('header') %>
 
 <!-- Hero Section -->
-<section class="hero-section center-align">
+<section class="hero-section center-align" id="hero">
   <div class="hero-content">
     <h4>Roasted. Brewed. Restocked.</h4>
     <h1>LaceVista X Classics</h1>
     <div class="buttons">
-      <a href="/shop/men" class="btn amber darken-2 m-1">Shop Men</a>
-      <a href="/shop/women" class="btn amber darken-2 m-1">Shop Women</a>
+      <a href="/shop?gender=men" class="btn amber darken-2 m-1">Shop Men</a>
+      <a href="/shop?gender=women" class="btn amber darken-2 m-1">Shop Women</a>
     </div>
   </div>
 </section>
@@ -16,6 +16,7 @@
 <section class="container section">
   <h4 class="center-align" style="margin-bottom: 2rem;">Our Collection</h4>
   <div class="row">
+    <!-- Product Cards -->
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -27,7 +28,6 @@
         </div>
       </div>
     </div>
-
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -39,7 +39,6 @@
         </div>
       </div>
     </div>
-
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -51,7 +50,6 @@
         </div>
       </div>
     </div>
-
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
@@ -109,7 +107,7 @@
   </div>
 </div>
 
-
+<!-- ✅ Scripts -->
 <script>
   function toggleChat() {
     const body = document.getElementById("chat-body");
@@ -135,6 +133,27 @@
     messagesDiv.innerHTML += `<div><strong>LaceBot:</strong> ${data.reply}</div>`;
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
+
+  // ✅ Background Image Slider for Hero Section
+ const heroSection = document.getElementById('hero');
+  const bgImages = [
+    '/images/bg1.jpg', // Default first image
+    '/images/bg2.jpg',
+    '/images/bg3.jpg'
+  ];
+
+  let index = 0;
+
+  // Set initial background immediately
+  heroSection.style.backgroundImage = `url('${bgImages[index]}')`;
+
+  // Rotate images every 2 seconds starting from second image
+  setInterval(() => {
+    index = (index + 1) % bgImages.length;
+    heroSection.style.backgroundImage = `url('${bgImages[index]}')`;
+  }, 2000);
+</script>
+
 </script>
 
 <%- include('footer') %>
