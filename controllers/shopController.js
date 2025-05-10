@@ -1,17 +1,17 @@
+const Product = require('../models/product');
 
-exports.getShop = (req, res) => {
-  const cartItems = [
-    { id: 1, name: "Nike Air Max", image:"/images/shoe1.jpg" , description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.",  price: 120, quantity: 2, color: "black", size: 7 },
-    { id: 2, name: "Adidas UltraBoost", image:"/images/shoe1.jpg",description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.", price: 150, quantity: 1, color: "red", size: 4 },
-    { id: 3, name: "Adidas UltraBoost2", image:"/images/shoe1.jpg",description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.", price: 150, quantity: 1, color: "red", size: 4 },
-    { id: 4, name: "Adidas UltraBoost3", image:"/images/shoe1.jpg",description: "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.", price: 150, quantity: 1, color: "red", size: 4 },
-  ];
+exports.getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find(); // Fetch from DB
 
     res.render('shop', {
       title: 'Shop',
-      stylesheet: 'shop', 
+      stylesheet: 'shop',
       script: 'shop',
-      cartItems
+      productList: products
     });
-    console.error('Cart:', cartItems);
-  };
+  } catch (err) {
+    console.error('Error fetching products:', err);
+    res.status(500).send('Error fetching products');
+  }
+};

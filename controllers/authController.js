@@ -60,12 +60,14 @@ exports.createUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    console.log('Login Input:', req.body);
+    // console.log('Login Input:', req.body);
     const userFind = await User.findOne({ email });
-    console.log('Found:', userFind);
+    // console.log('Login Found:', userFind);
     if (userFind && userFind.password === password) {
-      console.log('Validated:', userFind);
-      req.session.user = userFind;
+      // console.log('Validated:', userFind);
+      req.session.user = userFind;      
+      req.session.userId = userFind._id;
+      // console.log('session login id:', req.session.userId);
       res.redirect('shop'); // Redirect to shop or home page
     } else {
       res.render('login', { error: 'Invalid email or password' });
