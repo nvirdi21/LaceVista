@@ -292,3 +292,17 @@ nav .brand-logo {
 .page-footer .container {
   text-align: center;
 }
+
+input:focus {
+  border-bottom: 2px solid #ff6f00 !important;
+  box-shadow: none !important;
+}
+
+label {
+  color: #0d47a1 !important;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-weight: bold;
+}
