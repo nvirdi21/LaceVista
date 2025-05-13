@@ -78,5 +78,34 @@
 
   }
 
-
+  .when-to-wear {
+    background-color: #f5f5f5;
+    padding: 50px 0;
+  }
+  
+  .when-to-wear h4 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+  
+  .when-to-wear .wear-item {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .when-to-wear .wear-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .when-to-wear .wear-item p {
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  
   
