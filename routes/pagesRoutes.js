@@ -13,6 +13,21 @@ router.get('/menInfoSneakers', (req, res) => {
       });
 });
 
+router.get('/menInfoSports', (req, res) => {
+    res.render('menInfoSports', {
+        title: 'menInfoSports',
+        stylesheet: 'menInfoSports', 
+       
+      });
+});
+
+router.get('/menInfoFormals', (req, res) => {
+    res.render('menInfoFormals', {
+        title: 'menInfoFormals',
+        stylesheet: 'menInfoFormals', 
+      });
+});
+
 module.exports = router;
 
 
