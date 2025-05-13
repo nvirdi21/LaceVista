@@ -50,23 +50,22 @@ exports.getCart = async (req, res) => {
 };
 
 
-
 exports.addToCart = async (req, res) => {
   try {    
-    console.log('Reach to AddToCart');
+    // console.log('Reach to AddToCart');
     const userId = req.session.userId; // Assume user ID stored in session
-    console.log('Logging User ID:', req.session.userId)
+    // console.log('Logging User ID:', req.session.userId)
     const { productId } = req.body;
-    console.log('Product Body:', req.body);
+    // console.log('Product Body:', req.body);
     let cart = await Cart.findOne({ userId });
-    console.log('Found Existing Data:', cart);
+    // console.log('Found Existing Data:', cart);
     if (!cart) {
       // Create new cart
       cart = new Cart({
         userId,
         items: [{ productId, qty: 1 }]
       });
-      console.log('Add New Card Data:', cart);
+      // console.log('Add New Card Data:', cart);
     } else {
       // Check if product already exists in cart
       const existingItem = cart.items.find(item => item.productId.toString() === productId);

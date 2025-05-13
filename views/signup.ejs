@@ -43,4 +43,19 @@
   </div>
 </div>
 
+<script>
+document.getElementById("email").addEventListener("blur", () => {
+  const email = document.getElementById("email").value;
+  if (email) {
+    fetch('/send-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    }).then(res => res.text())
+      .then(msg => alert(msg))
+      .catch(err => alert('Error sending OTP'));
+  }
+});
+</script>
+
 <%- include('footer') %>
