@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
+const Product = require('../models/product');
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -99,11 +100,17 @@ exports.loginUser = async (req, res) => {
     const userFind = await User.findOne({ email });
     // console.log('Login Found:', userFind);
     if (userFind && userFind.password === password) {
-      // console.log('Validated:', userFind);
+      // console.log('Validated:', userFind.role);
       req.session.user = userFind;
       req.session.userId = userFind._id;
       // console.log('session login id:', req.session.userId);
-      res.redirect('shop'); // Redirect to shop or home page
+      if (userFind.role == "admin") {
+        const products = await Product.find();
+        res.render('admin/products', { products });
+      }
+      else {
+        res.redirect('shop'); // Redirect to shop or home page
+      }
     } else {
       res.render('login', { error: 'Invalid email or password' });
     }
