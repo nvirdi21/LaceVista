@@ -12,6 +12,7 @@ const cartRoutes = require('./routes/cartRoutes');
 const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
 const router = express.Router();
+const orderRoutes = require('./routes/orderRoutes');
 
 app.use(session({
   secret: 'LaceVista@2025',
@@ -72,6 +73,7 @@ app.use('/', authRoutes);
 app.use('/', shopRoutes);
 app.use('/', cartRoutes);
 app.use('/', pagesRoutes);
+app.use('/', orderRoutes);
 app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
 
 // Start server
