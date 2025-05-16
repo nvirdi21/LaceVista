@@ -1,6 +1,29 @@
 const Order = require('../models/order');
 const Cart = require('../models/cart');
 
+exports.listOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ deleted: false })
+      .populate('userId')
+      .populate('items.productId');    
+    
+    res.render('admin/orders', { orders });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Failed to fetch orders');
+  }
+};
+
+exports.softDeleteOrder = async (req, res) => {
+  try {
+    await Order.findByIdAndUpdate(req.params.id, { deleted: true });
+    res.redirect('/admin/orders');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Failed to delete order');
+  }
+};
+
 exports.placeOrder = async (req, res) => {
   try {
     const userId = req.session.userId;
