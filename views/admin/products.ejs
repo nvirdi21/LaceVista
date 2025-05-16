@@ -8,6 +8,28 @@
   </div>
 
   <div class="row">
+    <form
+      action="/admin/products/bulk-update-price"
+      method="POST"
+      class="col s12"
+    >
+      <div class="input-field inline">
+        <input
+          type="number"
+          name="priceChange"
+          id="priceChange"
+          step="0.01"
+          required
+        />
+        <label for="priceChange">+/- Price By ($)</label>
+      </div>
+      <button class="btn blue darken-3 waves-effect waves-light" type="submit">
+        <i class="material-icons left">update</i>Update All Prices
+      </button>
+    </form>
+  </div>
+
+  <div class="row">
     <div class="col s12 right-align">
       <a
         href="/admin/products/new"

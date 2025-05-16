@@ -11,8 +11,9 @@ const shopRoutes = require('./routes/shopRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
-const router = express.Router();
 const orderRoutes = require('./routes/orderRoutes');
+const router = express.Router();
+
 
 app.use(session({
   secret: 'LaceVista@2025',

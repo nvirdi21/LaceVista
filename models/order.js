@@ -17,7 +17,8 @@ const orderSchema = new mongoose.Schema({
       productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
       qty: { type: Number, default: 1 }
     }
-  ]
+  ],
+   deleted: { type: Boolean, default: false }  // Soft delete flag
 });
 
 module.exports = mongoose.model('Order', orderSchema);

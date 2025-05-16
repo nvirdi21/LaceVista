@@ -1,21 +1,5 @@
 const Product = require('../models/product');
 
-// exports.getAllProducts = async (req, res) => {
-//   try {
-//     const products = await Product.find(); // Fetch from DB
-
-//     res.render('shop', {
-//       title: 'Shop',
-//       stylesheet: 'shop',
-//       script: 'shop',
-//       productList: products
-//     });
-//   } catch (err) {
-//     console.error('Error fetching products:', err);
-//     res.status(500).send('Error fetching products');
-//   }
-// };
-
 exports.getAllProducts = async (req, res) => {
   try {
     const { color, maxPrice } = req.query;
@@ -47,7 +31,6 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-
 exports.getAll = async (req, res) => {
   const products = await Product.find();
   res.render('admin/products', { products });
@@ -77,4 +60,20 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
   await Product.findByIdAndDelete(req.params.id);
   res.redirect('/admin/products');
+};
+
+exports.bulkUpdatePrice = async (req, res) => {
+  const priceChange = parseFloat(req.body.priceChange);
+
+  if (isNaN(priceChange)) {
+    return res.status(400).send('Invalid price change value');
+  }
+
+  try {
+    await Product.updateMany({}, { $inc: { price: priceChange } });
+    res.redirect('/admin/products');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Failed to update prices');
+  }
 };
