@@ -11,7 +11,7 @@
     </div>
 
     <!--Chatbot main container-->
-    <div id="chat-main-container" style="display: block">
+    <div id="chat-main-container" style="display: none">
         <!-- ChatBot Body  -->
         <div class="chat-body">
             <div class="message bot-message">
@@ -21,21 +21,6 @@
                     How can I help you today?
                 </div>
             </div>
-            <!-- <div class="message user-message">
-                <div class="message-text">
-                    Give me suggestion to wear with black formal shoes
-                </div>
-            </div>
-            <div class="message bot-message thinking">
-                <img class="bot-avatar" src="/images/chatbot.png" width="50" height="50" />
-                <div class="message-text">
-                    <div class="thinking-indicator">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
         <!-- ChatBot Footer  -->
@@ -43,13 +28,17 @@
             <form action="#" class="chat-form">
                 <textarea placeholder="Message...." class="message-input" id="message-input-id" required></textarea>
                 <div class="chat-controls">
-                    <button type="button" class="material-symbols-rounded">
-                        <i class="material-icons">send</i>
+                    <div class="file-upload-wrapper">
+                        <input type="file" accept="images/*" id="file-input" hidden>
+                        <img src="#">
+                        <button type="button" id="file-upload" class="material-symbols-rounded">
+                            <i class="material-icons">attach_file</i>
+                        </button>
+                    </div>
+                    <button type="button" id="file-cancel">
+                        <i class="material-icons">close</i>
                     </button>
-                    <button type="button" class="material-symbols-rounded">
-                        <i class="material-icons">send</i>
-                    </button>
-                    <button type="submit" class="material-symbols-rounded" id="send-message">
+                    <button type="submit" id="send-message">
                         <i class="material-icons">send</i>
                     </button>
                 </div>
