@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,6 +10,7 @@ const pagesRoutes = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const shopRoutes = require('./routes/shopRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const chatBotRoutes = require('./routes/chatBotRoute');
 const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
 const orderRoutes = require('./routes/orderRoutes');
@@ -24,9 +26,13 @@ app.use(session({
 const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout route
 
 // Middleware
-app.use(express.json());
+// app.use(express.json());
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
+
 // app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
+
 
 // View engine setup
 app.set('view engine', 'ejs');
@@ -76,6 +82,7 @@ app.use('/', cartRoutes);
 app.use('/', pagesRoutes);
 app.use('/', orderRoutes);
 app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
+app.use('/api', chatBotRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
