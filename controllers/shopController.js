@@ -17,14 +17,7 @@ exports.getAllProducts = async (req, res) => {
 
     const products = await Product.find(filter);
 
-    res.render('shop', {
-      title: 'Shop',
-      stylesheet: 'shop',
-      script: 'shop',
-      productList: products,
-      selectedColor: color || '',
-      maxPrice: maxPrice || 999,
-    });
+    
   } catch (err) {
     console.error('Error fetching products:', err);
     res.status(500).send('Error fetching products');
