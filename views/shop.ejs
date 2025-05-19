@@ -6,13 +6,13 @@
   <p class="about-subheading">Where Comfort Meets Confidence</p>
 </section>
 
-<!-- Filter sidenav -->
+<!-- Filter sidenav  -->
 <section class="shop-all-section shop-heading">
   <span>Shop All</span>
-  <a href="#" data-target="slide-out" class="sidenav-trigger">
-    <i class="material-icons">menu</i>
-    <p>Filter</p>
-  </a>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"
+    ><i class="material-icons">menu</i>
+    <p>Filter</p></a
+  >
 
   <form action="/shop" method="GET" id="filter-form">
     <ul id="slide-out" class="sidenav">
@@ -22,7 +22,11 @@
         <!-- Color Filter -->
         <div class="input-field col s12 m6">
           <span class="filter-label">Color</span>
-          <select id="color-filter" name="color" onchange="document.getElementById('filter-form').submit();">
+          <select
+            id="color-filter"
+            name="color"
+            onchange="document.getElementById('filter-form').submit();"
+          >
             <option value="">All</option>
             <option value="black" <%= selectedColor === 'black' ? 'selected' : '' %>>Black</option>
             <option value="white" <%= selectedColor === 'white' ? 'selected' : '' %>>White</option>
@@ -47,9 +51,18 @@
               onchange="document.getElementById('filter-form').submit();"
             />
           </p>
-          <div class="flex" style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+          <div
+            class="flex"
+            style="
+              display: flex;
+              justify-content: space-between;
+              font-size: 0.9rem;
+            "
+          >
             <span>$0</span>
-            <span id="price-value">$<%= typeof maxPrice !== 'undefined' ? maxPrice : 499 %></span>
+            <span id="price-value"
+              >$<%= typeof maxPrice !== 'undefined' ? maxPrice : 499 %></span
+            >
             <span>$499</span>
           </div>
         </div>
@@ -77,14 +90,16 @@
         </div>
         <div class="card-content">
           <p><%= item.description %></p>
-          <!-- Real-time viewer counter -->
-          <div class="viewer-badge" id="viewer-<%= item._id %>">Loading views...</div>
         </div>
         <div class="card-action">
           <p>$<%= item.price %></p>
           <div><span>Color:</span> <%= item.color %></div>
           <p>All Sizes Available</p>
-          <a class="btn-small waves-effect waves-light add-to-cart" data-id="<%= item._id %>">
+
+          <a
+            class="btn-small waves-effect waves-light add-to-cart"
+            data-id="<%= item._id %>"
+          >
             <i class="material-icons">add</i>
           </a>
         </div>
@@ -94,7 +109,6 @@
   </div>
 </section>
 
-<!-- Add to cart script -->
 <script>
   document.querySelectorAll(".add-to-cart").forEach((btn) => {
     btn.addEventListener("click", async () => {
