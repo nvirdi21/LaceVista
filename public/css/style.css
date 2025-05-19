@@ -306,3 +306,17 @@ label {
   text-transform: uppercase;
   font-weight: bold;
 }
+
+.viewer-badge {
+  display: inline-block;
+  background-color: #ff5252;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
