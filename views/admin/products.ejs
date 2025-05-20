@@ -48,6 +48,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price ($)</th>
+            <th>Stock</th>
             <th class="center-align">Actions</th>
           </tr>
         </thead>
@@ -57,6 +58,7 @@
             <td><%= product.name %></td>
             <td><%= product.description %></td>
             <td><%= product.price %></td>
+            <td><%= product.stock %></td>
             <td class="center-align">
               <a
                 href="/admin/products/<%= product._id %>/edit"

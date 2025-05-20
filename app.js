@@ -13,7 +13,8 @@ const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
 const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
-
+const http = require('http');
+const socketIO = require('socket.io');
 
 app.use(session({
   secret: 'LaceVista@2025',
@@ -78,7 +79,15 @@ app.use('/', orderRoutes);
 app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
+
+const server = http.createServer(app);
+const io = socketIO(server); // attach socket.io
+
+// Make io available to routes/controllers
+app.set('io', io);
+
+server.listen(3000, () => console.log('Socket Server running on port 3000'));
