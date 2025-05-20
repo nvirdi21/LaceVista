@@ -70,3 +70,4 @@ exports.bulkUpdatePrice = async (req, res) => {
     res.status(500).send('Failed to update prices');
   }
 };
+

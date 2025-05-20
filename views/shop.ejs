@@ -82,7 +82,9 @@
   <div class="row">
     <% productList.forEach(item => { %>
     <div class="col s12 m4">
-      <div class="card">
+      <div class="card product-card" data-product-id="<%= item._id %>">
+      <div class="card product-card" data-product-id="<%= item._id %>">
+      <div class="card product-card" data-product-id="<%= item._id %>">
         <div class="card-image">
           <img src="<%= item.image %>" alt="<%= item.name %>" />
           <span class="card-title"><%= item.name %></span>
@@ -129,3 +131,5 @@
     });
   });
 </script>
+<%- include('footer') %>
+

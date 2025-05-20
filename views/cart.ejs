@@ -1,52 +1,59 @@
 <%- include('header') %>
 
-<section class="container">
-  <h4 class="center-align">Shopping Cart</h4>
-  <div class="row">
-    <!-- Left Column: Cart Items -->
-    <div class="col s12 m7">
-      <% cartItems.forEach(item => { %>
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="<%= item.image %>" alt="<%= item.name %>" style="width: 120px; height: auto; object-fit: cover;">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h6><%= item.name %></h6>
-              <p><strong>Price:</strong> $<%= item.price %></p>
-              <p><strong>Color:</strong> <%= item.color %></p>
-              <p><strong>Size:</strong> <%= item.size || 'N/A' %></p>
-              <form action="/cart/update" method="POST" class="valign-wrapper" style="gap: 10px; margin-top: 10px;">
-                <input type="hidden" name="id" value="<%= item.id %>">
-                <button class="btn-flat btn-small" type="submit" name="quantity" value="<%= item.quantity - 1 %>">-</button>
-                <input type="number" name="quantity" value="<%= item.quantity %>" min="1" style="width: 60px; text-align: center;">
-                <button class="btn-flat btn-small" type="submit" name="quantity" value="<%= item.quantity + 1 %>">+</button>
-              </form>
-              <form action="/cart/remove" method="POST" style="margin-top: 10px;">
-                <input type="hidden" name="id" value="<%= item.id %>">
-                <button class="btn red lighten-1 white-text btn-small"><i class="material-icons">delete</i> Remove</button>
-              </form>
+<!-- ✅ WRAP real content inside cart-background -->
+<div class="page-container cart-background">
+
+  <section class="container">
+    <h4 class="center-align">Shopping Cart</h4>
+    <div class="row">
+      <!-- Left Column: Cart Items -->
+      <div class="col s12 m7">
+        <% cartItems.forEach(item => { %>
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="<%= item.image %>" alt="<%= item.name %>" style="width: 120px; height: auto; object-fit: cover;">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <h6><%= item.name %></h6>
+                <p><strong>Price:</strong> $<%= item.price %></p>
+                <p><strong>Color:</strong> <%= item.color %></p>
+                <p><strong>Size:</strong> <%= item.size || 'N/A' %></p>
+                <form action="/cart/update" method="POST" class="valign-wrapper" style="gap: 10px; margin-top: 10px;">
+                  <input type="hidden" name="id" value="<%= item.id %>">
+                  <button class="btn-flat btn-small" type="submit" name="quantity" value="<%= item.quantity - 1 %>">-</button>
+                  <input type="number" name="quantity" value="<%= item.quantity %>" min="1" style="width: 60px; text-align: center;">
+                  <button class="btn-flat btn-small" type="submit" name="quantity" value="<%= item.quantity + 1 %>">+</button>
+                </form>
+                <form action="/cart/remove" method="POST" style="margin-top: 10px;">
+                  <input type="hidden" name="id" value="<%= item.id %>">
+                  <button class="btn red lighten-1 white-text btn-small"><i class="material-icons">delete</i> Remove</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      <% }) %>
-    </div>
+        <% }) %>
+      </div>
 
-    <!-- Right Column: Summary -->
-    <div class="col s12 m5">
-      <div class="card summary-box">
-        <div class="card-content">
-          <span class="card-title">Summary</span>
-          <ul class="collection">
-            <% cartItems.forEach(item => { %>
-              <li class="collection-item"><%= item.name %> - $<%= item.price %></li>
-            <% }) %>
-          </ul>
-          <p><strong>Sales Tax:</strong> Included</p>
-          <h5><strong>Total: $<%= totalCost.toFixed(2) %></strong></h5>
-          <a href="/checkout" class="btn checkout-btn">PROCEED TO CHECKOUT</a>
+      <!-- Right Column: Summary -->
+      <div class="col s12 m5">
+        <div class="card summary-box">
+          <div class="card-content">
+            <span class="card-title">Summary</span>
+            <ul class="collection">
+              <% cartItems.forEach(item => { %>
+                <li class="collection-item"><%= item.name %> - $<%= item.price %></li>
+              <% }) %>
+            </ul>
+            <p><strong>Sales Tax:</strong> Included</p>
+            <h5><strong>Total: $<%= totalCost.toFixed(2) %></strong></h5>
+            <a href="/checkout" class="btn checkout-btn">PROCEED TO CHECKOUT</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+</div> <!-- ✅ End .cart-background wrapper -->
+
+<%- include('footer') %>
