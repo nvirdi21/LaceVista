@@ -306,3 +306,45 @@ label {
   text-transform: uppercase;
   font-weight: bold;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.hero-slider,
+.banner,
+.carousel {
+  flex-shrink: 0; /* prevent being squeezed */
+  min-height: auto !important;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.page-container {
+  flex: 1;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+}
+
+.cart-background {
+  background-image: url('/images/cart.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.checkout-background {
+  background-image: url('/images/checkout.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 60px; /* to give room below form */
+}

@@ -22,3 +22,4 @@ function applyFilters() {
 function updatePriceValue(val) {
   document.getElementById('price-value').textContent = `$${val}`;
 }
+
