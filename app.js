@@ -20,6 +20,23 @@ const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
 
 
+
+const http = require('http').createServer(app); // Create HTTP server manually
+const io = require('socket.io')(http);          // Attach Socket.IO
+
+
+// Route imports
+const pagesRoutes = require('./routes/pagesRoutes');
+const authRoutes = require('./routes/authRoutes');
+const shopRoutes = require('./routes/shopRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const chatBotRoutes = require('./routes/chatBotRoute');
+const session = require('express-session'); // session
+const cartController = require('./controllers/cartController');
+const orderRoutes = require('./routes/orderRoutes');
+const router = express.Router();
+
+
 app.use(session({
   secret: 'LaceVista@2025',
   resave: false,
@@ -40,6 +57,7 @@ mongoose.connect('mongodb://localhost:27017/LaceVista', {
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.error(err));
 
+const Cart = require('./models/cart'); // Ensure model exists
 
 // Dummy user (replace in real auth)
 // app.use((req, res, next) => {
