@@ -5,6 +5,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 
+const http = require('http').createServer(app); // Create HTTP server manually
+const io = require('socket.io')(http);          // Attach Socket.IO
+
+
 // Route imports
 const pagesRoutes = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -47,6 +51,7 @@ mongoose.connect('mongodb://localhost:27017/LaceVista', {
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.error(err));
 
+
 // Dummy user (replace in real auth)
 // app.use((req, res, next) => {
 //   req.user = { _id: '663df0ea3b42cdcdf204f8a4' }; // your test user ID
@@ -86,6 +91,7 @@ app.use('/api', chatBotRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+http.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
