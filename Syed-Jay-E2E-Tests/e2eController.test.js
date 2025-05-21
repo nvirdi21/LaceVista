@@ -46,8 +46,6 @@ describe('E-Commerce E2E Controller Tests', () => {
     });
   });
 
-
-
   describe('Order Controller', () => {
     it('should reject order placement if cart is empty', done => {
       chai.request(app)
@@ -59,4 +57,20 @@ describe('E-Commerce E2E Controller Tests', () => {
         });
     });
   });
+
+   describe('Chatbot Controller', () => {
+  it('should return chatbot reply', done => {
+    chai.request(app)
+      .post('/api/chatbot')
+      .send({ message: 'hello' })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('text');
+        expect(res.body.text).to.be.a('string');
+        done();
+      });
+  });
+});
+
+
 });
