@@ -1,13 +1,12 @@
 const Order = require('../models/order');
 const Cart = require('../models/cart');
-const Product = require('../models/product');  
-
+const Product = require('../models/product'); 
 exports.listOrders = async (req, res) => {
   try {
     const orders = await Order.find({ deleted: false })
       .populate('userId')
-      .populate('items.productId');
-
+      .populate('items.productId');    
+    
     res.render('admin/orders', { orders });
   } catch (err) {
     console.error(err);
