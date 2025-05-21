@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
-const app = express();
-const app = express();
+
 const http = require('http').createServer(app); // Create HTTP server manually
 
 // Route imports
@@ -17,7 +16,7 @@ const cartController = require('./controllers/cartController');
 const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
 const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst http = require('http');
-const socketIO = require('socket.io');
+const socketIO = require('socket.io');const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout route
 
 app.use(session({
   secret: 'LaceVista@2025',
@@ -82,6 +81,15 @@ app.use('/', orderRoutes);
 app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
 
 // === Start Server ===
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}
+
+// At bottom of app.js
+module.exports = app;
 if (process.env.NODE_ENV !== 'test') {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
