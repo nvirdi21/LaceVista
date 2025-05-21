@@ -25,6 +25,7 @@ exports.getAllProducts = async (req, res) => {
       selectedColor: color || '',
       maxPrice: maxPrice || 999,
     });
+    
   } catch (err) {
     console.error('Error fetching products:', err);
     res.status(500).send('Error fetching products');

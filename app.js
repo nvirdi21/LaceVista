@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
+const app = express();
+const http = require('http').createServer(app); // Create HTTP server manually
 
 // Route imports
 const pagesRoutes = require('./routes/pagesRoutes');
@@ -13,7 +15,7 @@ const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
 const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
-const http = require('http');
+const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst http = require('http');
 const socketIO = require('socket.io');
 
 app.use(session({
@@ -48,7 +50,7 @@ mongoose.connect('mongodb://localhost:27017/LaceVista', {
 // });
 
 router.get('/', cartController.getHomePage); // Home page route
-module.exports = router;
+// module.exports = router;
 
 // Middleware to inject cart count globally
 app.use(async (req, res, next) => {
@@ -69,7 +71,8 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Route mounting
+
+// === Mount Routes ===
 app.use('/', authRoutes);
 app.use('/', shopRoutes);
 app.use('/', cartRoutes);
@@ -77,11 +80,16 @@ app.use('/', pagesRoutes);
 app.use('/', orderRoutes);
 app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
 
-// Start server
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://localhost:${PORT}`);
-// });
+// === Start Server ===
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}
+
+// At bottom of app.js
+module.exports = app;
 
 const server = http.createServer(app);
 const io = socketIO(server); // attach socket.io

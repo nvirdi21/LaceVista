@@ -1,4 +1,5 @@
 {
+  "type": "commonjs",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
@@ -12,11 +13,11 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "chai": "^5.2.0",
-    "chai-http": "^5.1.2",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
     "mocha": "^11.4.0"
   },
   "scripts": {
-  "test": "mocha test --timeout 10000"
-}
+    "test:e2e": "mocha Syed-Jay-E2E-Tests/*.js --timeout 5000"
+  }
 }
