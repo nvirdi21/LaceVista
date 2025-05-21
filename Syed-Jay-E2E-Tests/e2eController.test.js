@@ -72,5 +72,26 @@ describe('E-Commerce E2E Controller Tests', () => {
   });
 });
 
+ describe('Home Controller', () => {
+    it('should load home page', done => {
+      chai.request(app)
+        .get('/')
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.text).to.include('Home');
+          done();
+        });
+    });
+
+    it('should load about page', done => {
+      chai.request(app)
+        .get('/about')
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.text).to.include('About');
+          done();
+        });
+    });
+  });
 
 });
