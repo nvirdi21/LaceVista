@@ -57,18 +57,18 @@ exports.getSignup = (req, res) => {
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    // console.log('Login Input:', req.body);
+   
     const userFind = await User.findOne({ email });
-    // console.log('Login Found:', userFind);
+    
     if (userFind && userFind.password === password) {
-      // console.log('Validated:', userFind.role);
+      
       req.session.user = userFind;
       req.session.userId = userFind._id;
-      // console.log('session login id:', req.session.userId);
+      
       if (userFind.role == "admin") {
         const products = await Product.find();
         res.redirect('shop')
-        //res.render('admin/products', { products });
+       
       }
       else {
         res.redirect('shop'); // Redirect to shop or home page
@@ -89,8 +89,7 @@ exports.createUser = async (req, res) => {
   if (!first_name || !last_name || !email || !mobile || !password || !otp)
     return res.status(400).send('All fields including OTP are required');
 
-  // if (req.session.otp !== otp || req.session.emailForOtp !== email)
-  //   return res.status(400).send('Invalid OTP');
+ 
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10); // salt rounds = 10
