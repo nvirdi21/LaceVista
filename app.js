@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const app = express();
+const app = express();
 const http = require('http').createServer(app); // Create HTTP server manually
 
 // Route imports
@@ -15,7 +16,7 @@ const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
 const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
-const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst http = require('http');
+const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst http = require('http');
 const socketIO = require('socket.io');
 
 app.use(session({
@@ -91,10 +92,3 @@ if (process.env.NODE_ENV !== 'test') {
 // At bottom of app.js
 module.exports = app;
 
-const server = http.createServer(app);
-const io = socketIO(server); // attach socket.io
-
-// Make io available to routes/controllers
-app.set('io', io);
-
-server.listen(3000, () => console.log('Socket Server running on port 3000'));
