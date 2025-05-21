@@ -58,6 +58,10 @@ describe('E-Commerce E2E Controller Tests', () => {
     });
   });
 
+});
+
+
+
    describe('Chatbot Controller', () => {
   it('should return chatbot reply', done => {
     chai.request(app)
