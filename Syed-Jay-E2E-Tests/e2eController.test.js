@@ -94,4 +94,15 @@ describe('E-Commerce E2E Controller Tests', () => {
     });
   });
 
+   describe('Shop Controller', () => {
+    it('should load all products admin page', done => {
+      chai.request(app)
+        .get('/admin/products')
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+  });
+
 });
