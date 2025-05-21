@@ -4,19 +4,21 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const app = express();
+
 const http = require('http').createServer(app); // Create HTTP server manually
 const io = require('socket.io')(http);          // Attach Socket.IO
 
 
 // Route imports
-const pagesRoutes = require('./routes/pagesRoutes');
-const authRoutes = require('./routes/authRoutes');
-const shopRoutes = require('./routes/shopRoutes');
-const cartRoutes = require('./routes/cartRoutes');
-const chatBotRoutes = require('./routes/chatBotRoute');
+// const pagesRoutes = require('./routes/pagesRoutes');
+// const authRoutes = require('./routes/authRoutes');
+// const shopRoutes = require('./routes/shopRoutes');
+// const cartRoutes = require('./routes/cartRoutes');
+// const chatBotRoutes = require('./routes/chatBotRoute');
 const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
-const orderRoutes = require('./routes/orderRoutes');
+// const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
 
 

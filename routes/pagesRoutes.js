@@ -2,6 +2,7 @@
 const express = require('express');
 const router  = express.Router();
 const homeController = require('../controllers/homeController');
+const shopController = require('../controllers/shopController');
 
 router.get('/',  homeController.getHome);
 router.get('/about',  homeController.getAbout);
@@ -12,6 +13,10 @@ router.get('/menInfoSneakers', (req, res) => {
         // script: 'menInfoSneakers'
       });
 });
+
+router.get('/sneakers', shopController.getsneakers)
+router.get('/heels', shopController.getheels)
+router.get('/flats', shopController.getflats)
 
 router.get('/menInfoSports', (req, res) => {
     res.render('menInfoSports', {
