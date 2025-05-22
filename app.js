@@ -29,7 +29,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // View engine setup
-// View engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set(express.static('public'));
