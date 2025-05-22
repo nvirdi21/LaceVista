@@ -15,5 +15,12 @@ exports.handleChat = (req, res) => {
     reply = "Hello there! 👟 Need help finding the perfect shoes?";
   }
 
-  res.json({ reply });
+
+  res.render('chatBot', {
+    title: 'ChatBot',
+    stylesheet: 'chatBot',
+    script: 'chatBot',
+    reply 
+  })
+  // res.json({ reply });
 };

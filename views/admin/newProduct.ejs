@@ -1,29 +1,32 @@
 <%- include('../header') %>
 
-<div class="container">
-  <h4 class="center-align blue-text text-darken-2">Add New Product</h4>
+<!-- ✅ WRAP all content in page-container -->
+<div class="page-container">
 
-  <form action="/admin/products" method="POST">
-    <div class="row">
-      <div class="input-field col s12">
-        <input type="text" id="name" name="name" class="validate" required />
-        <label for="name">Product Name</label>
-      </div>
+  <div class="container">
+    <h4 class="center-align blue-text text-darken-2">Add New Product</h4>
 
-      <div class="input-field col s12">
-        <textarea
-          id="description"
-          name="description"
-          class="materialize-textarea"
-          required
-        ></textarea>
-        <label for="description">Product Description</label>
-      </div>
+    <form action="/admin/products" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" id="name" name="name" class="validate" required />
+          <label for="name">Product Name</label>
+        </div>
 
-      <div class="input-field col s12 m6">
-        <input type="text" id="color" name="color" class="validate" required />
-        <label for="color">Product Color</label>
-      </div>
+        <div class="input-field col s12">
+          <textarea
+            id="description"
+            name="description"
+            class="materialize-textarea"
+            required
+          ></textarea>
+          <label for="description">Product Description</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+          <input type="text" id="color" name="color" class="validate" required />
+          <label for="color">Product Color</label>
+        </div>
 
       <div class="input-field col s12 m6">
         <input
@@ -58,24 +61,26 @@
        
 
 
+        <div class="col s12 center-align">
+          <button
+            type="submit"
+            class="btn waves-effect waves-light blue darken-2"
+          >
+            Add Product
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
       <div class="col s12 center-align">
-        <button
-          type="submit"
-          class="btn waves-effect waves-light blue darken-2"
-        >
-          Add Product
-        </button>
+        <a href="/admin/products" class="btn grey lighten-1 waves-effect">
+          Back to Product List
+        </a>
       </div>
     </div>
-  </form>
-
-  <div class="row">
-    <div class="col s12 center-align">
-      <a href="/admin/products" class="btn grey lighten-1 waves-effect"
-        >Back to Product List</a
-      >
-    </div>
   </div>
-</div>
+
+</div> <!-- ✅ END page-container -->
 
 <%- include('../footer') %>

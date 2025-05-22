@@ -94,7 +94,7 @@ exports.placeOrder = async (req, res) => {
 
     res.render('order-success', {
       firstName: user.first_name,
-      lastName: user.last_name
+      lastName: user.last_name 
     });
   } catch (err) {
     console.error('Order Placement Error:', err);
