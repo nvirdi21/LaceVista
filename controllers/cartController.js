@@ -3,37 +3,32 @@ const Product = require('../models/product');
 
 exports.getHomePage = async (req, res) => {
   try {
+    // Assuming the user is logged in and we have access to their user ID
     const cart = await Cart.findOne({ userId: req.session.userId });
+    const cartCount = cart
+      ? cart.items.reduce((total, item) => total + item.qty, 0)
+      : 0;
 
-    const cartCount = cart?.items?.reduce((total, item) => total + item.qty, 0) || 0;
-
-    res.render('home', { cartCount });
+    // Render the homepage and pass the cartCount to the view
+    res.render('home', { cartCount: cartCount });
   } catch (err) {
     console.error('Error fetching cart count:', err);
-    res.render('home', { cartCount: 0 });
+    res.render('home', { cartCount: 0 }); // Default to 0 if error occurs
   }
 };
 
 exports.getCart = async (req, res) => {
   try {
-    const userId = req.session.userId;
+    const userId = req.session.userId; // assumes user is authenticated and available
 
+    // Populate product info inside cart
     const cart = await Cart.findOne({ userId }).populate('items.productId');
 
-    if (!cart || !cart.items.length) {
+    if (!cart || cart.items.length === 0) {
       return res.render('cart', { cartItems: [], totalCost: 0 });
     }
 
-    // Filter out items where the product reference is missing
-    const validItems = cart.items.filter(item => item.productId);
-
-    // Optional: Save cleaned-up cart
-    if (validItems.length !== cart.items.length) {
-      cart.items = validItems;
-      await cart.save();
-    }
-
-    const cartItems = validItems.map(item => {
+    const cartItems = cart.items.map(item => {
       const product = item.productId;
       return {
         id: product._id,
@@ -50,28 +45,31 @@ exports.getCart = async (req, res) => {
 
     res.render('cart', { cartItems, totalCost });
   } catch (err) {
-    console.error('Error loading cart:', err);
+    console.error(err);
     res.status(500).send('Internal Server Error');
   }
 };
 
+
 exports.addToCart = async (req, res) => {
   try {
-    
-    const userId = req.session.userId; 
+    // console.log('Reach to AddToCart');
+    const userId = req.session.userId; // Assume user ID stored in session
+    // console.log('Logging User ID:', req.session.userId)
     const { productId } = req.body;
-
+    // console.log('Product Body:', req.body);
     let cart = await Cart.findOne({ userId });
-
+    // console.log('Found Existing Data:', cart);
     if (!cart) {
+      // Create new cart
       cart = new Cart({
         userId,
         items: [{ productId, qty: 1 }]
       });
+      // console.log('Add New Card Data:', cart);
     } else {
-      const existingItem = cart.items.find(
-        item => item.productId.toString() === productId
-      );
+      // Check if product already exists in cart
+      const existingItem = cart.items.find(item => item.productId.toString() === productId);
       if (existingItem) {
         existingItem.qty += 1;
       } else {
@@ -131,28 +129,3 @@ exports.updateCartItem = async (req, res) => {
   }
 };
 
-
-
-exports.removeFromCart = async (req, res) => {
-  try {
-    const userId = req.session.userId;
-    const { productId } = req.body;
-
-    let cart = await Cart.findOne({ userId });
-
-    if (!cart) {
-      return res.redirect('/cart');
-    }
-
-    // Remove the item by filtering it out
-    cart.items = cart.items.filter(
-      item => item.productId.toString() !== productId
-    );
-
-    await cart.save();
-    res.redirect('/cart');
-  } catch (err) {
-    console.error('Error removing item from cart:', err);
-    res.status(500).send('Failed to remove item from cart');
-  }
-};
