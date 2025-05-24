@@ -6,19 +6,19 @@ LaceVista is a full-stack e-commerce platform for shoes, built with Node.js, Exp
 Fully responsive UI with elegant hero sections, product cards, and navigation
 
 **Pages:**
-Home, Shop, About Us, Login, Signup, Checkout
-Smooth background transitions with automatic cycling hero images
-Integrated chatbot assistant (LaceBot)
+• Home, Shop, About Us, Login, Signup, Checkout
+• Smooth background transitions with automatic cycling hero images
+• Integrated chatbot assistant (LaceBot)
 
 **🔐 Authentication**
-Signup and login functionality
-OTP field added during registration (email-based)
+• Signup and login functionality
+• OTP field added during registration (email-based)
 
 **🛒 Checkout Module**
 Checkout form with:
-First Name, Last Name, Email, Mobile
-Shoe Measurement Section: Length (cm), Width (cm), Arch (cm)
-Validated client-side before submission
+• First Name, Last Name, Email, Mobile
+• Shoe Measurement Section: Length (cm), Width (cm), Arch (cm)
+• Validated client-side before submission
 
 **🤖 Chatbot Assistant (LaceBot)**
 Provides quick answers to user questions like:
