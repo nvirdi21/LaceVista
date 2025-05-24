@@ -17,10 +17,11 @@ Smooth background transitions with auto-cycling hero images
 
 Integrated chatbot assistant (LaceBot)
 
-**🔐 Authentication**
-Signup and login functionality
+## 🔐 Authentication
 
-Email-based OTP verification field added during registration
+- Signup and login functionality  
+- Email-based OTP verification field added during registration
+
 
 **🛒 Checkout Module**
 Checkout form includes:
