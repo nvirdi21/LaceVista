@@ -7,7 +7,6 @@ const path = require('path');
 const http = require('http').createServer(app); // Create HTTP server manually
 
 // Route imports
-const studentRoute = require('./routes/student');
 const pagesRoutes = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const shopRoutes = require('./routes/shopRoutes');
@@ -72,7 +71,6 @@ app.use(async (req, res, next) => {
 
 
 // === Mount Routes ===
-app.use('/', studentRoute); 
 app.use('/', authRoutes);
 app.use('/', shopRoutes);
 app.use('/', cartRoutes);
