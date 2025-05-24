@@ -7,6 +7,7 @@ Fully responsive UI with elegant hero sections, product cards, and navigation
 
 **Pages:**
 • Home, Shop, About Us, Login, Signup, Checkout
+
 • Smooth background transitions with automatic cycling hero images
 • Integrated chatbot assistant (LaceBot)
 
