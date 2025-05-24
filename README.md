@@ -16,9 +16,11 @@
 
 - Home
 - Shop
+- Products (admin only)
 - About Us
 - Login
 - Signup
+- Cart
 - Checkout
 
 ---
@@ -43,6 +45,17 @@
 
 ---
 
+## 🛒 Cart Module
+
+- Cart enables user to add any product from shop to cart
+- Each card in cart page shows 
+  - Name of the product
+  - Color of the product
+  - Price of the product
+  - Size of the product
+  - Real time Stock update
+
+
 ## 🤖 Chatbot Assistant (LaceBot)
 
 - Responds to user queries like:
@@ -52,6 +65,19 @@
 
 ---
 
+## 🧾 Admin Products Panel
+
+- Admin dashboard to view all products on the website
+- Admin can add/ edit or delete any product and its details
+- Admin can also update the prices of all products in one click
+- Columns include:
+  - Name
+  - Description
+  - Price
+  - Stock
+  - Actions(edit/delete)
+ 
+---
 ## 🧾 Admin Order Panel
 
 - Admin dashboard to view submitted orders
@@ -64,9 +90,10 @@
 
 ## 📂 Project Structure (MVC)
 
+- 'models' - Contains schemas of different collection of Database
+- `views/` – EJS templates for UI rendering
 - `controllers/` – Application logic (chatbot, orders, etc.)
 - `routes/` – Navigation and API endpoints
-- `views/` – EJS templates for UI rendering
 - `public/` – Static assets: stylesheets, scripts, images
 - `app.js` – Main server file
 
