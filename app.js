@@ -7,6 +7,7 @@ const path = require('path');
 const http = require('http').createServer(app); // Create HTTP server manually
 
 // Route imports
+const studentRoute = require('./routes/student');
 const pagesRoutes = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const shopRoutes = require('./routes/shopRoutes');
@@ -37,8 +38,8 @@ app.set(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/LaceVista', {
-}).then(() => console.log('MongoDB Connected'))
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/LaceVista')
+  .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error(err));
 
 // Dummy user (replace in real auth)
@@ -71,6 +72,7 @@ app.use(async (req, res, next) => {
 
 
 // === Mount Routes ===
+app.use('/', studentRoute); 
 app.use('/', authRoutes);
 app.use('/', shopRoutes);
 app.use('/', cartRoutes);
