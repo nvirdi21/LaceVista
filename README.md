@@ -89,7 +89,6 @@
 - MongoDB
 
 ### Utilities & Tools:
-- Nodemailer (planned)
 - express-session
 - Git & GitHub (Version Control)
 - Trello (Project Management)
