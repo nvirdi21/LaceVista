@@ -68,7 +68,7 @@ exports.loginUser = async (req, res) => {
       
       if (userFind.role == "admin") {
         const products = await Product.find();
-        res.redirect('shop')
+        res.redirect('/admin/products');
        
       }
       else if(userFind.role = "customer"){
