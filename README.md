@@ -1,70 +1,99 @@
-# LaceVista
-LaceVista is a full-stack e-commerce platform for shoes, built with Node.js, Express.js, MongoDB, EJS, Bootstrap, and JavaScript. It features a dynamic product catalog, user-friendly design, MVC structure, and testing integration, delivering a modern and scalable shopping experience.
+**🛍️ LaceVista**
+LaceVista is a full-stack e-commerce platform for shoes, built using modern web technologies. It features a dynamic product catalog, responsive design, integrated chatbot assistant, and follows the MVC architecture for maintainability and scalability.
 
-**🚀Features**
+**🚀 Features**
 🖥️ Frontend (EJS + Materialize)
-Fully responsive UI with elegant hero sections, product cards, and navigation
+Fully responsive UI with elegant design
 
-**Pages:**
-• Home, Shop, About Us, Login, Signup, Checkout
+**Pages included:**
+• Home
+• Shop
+• About Us
+• Login
+• Signup
+• Checkout
 
-• Smooth background transitions with automatic cycling hero images
-• Integrated chatbot assistant (LaceBot)
+Smooth background transitions with auto-cycling hero images
+
+Integrated chatbot assistant (LaceBot)
 
 **🔐 Authentication**
-• Signup and login functionality
-• OTP field added during registration (email-based)
+Signup and login functionality
+
+Email-based OTP verification field added during registration
 
 **🛒 Checkout Module**
-Checkout form with:
-• First Name, Last Name, Email, Mobile
-• Shoe Measurement Section: Length (cm), Width (cm), Arch (cm)
-• Validated client-side before submission
+Checkout form includes:
+• First Name, Last Name
+• Email, Mobile Number
+• Shoe Measurements: Length (cm), Width (cm), Arch (cm)
+
 
 **🤖 Chatbot Assistant (LaceBot)**
-Provides quick answers to user questions like:
-"Shipping", "Returns", "Shoes under $150"
-Future enhancement: GPT-powered AI responses
+Responds to user queries like:
+• “Shipping”
+• “Returns”
+• “Shoes under $150”
+
 
 **🧾 Admin Order Panel**
-Admin can view orders submitted through the checkout form
-Columns include: Item Name/No, Quantity, Total Amount
-Designed to support further CRUD operations
+Admin dashboard to view submitted orders
+
+**Columns include:**
+• Item Name/Number
+• Quantity
+• Total Amount
 
 
 **📂 Project Structure (MVC)**
-controllers/ – Application logic for chatbot, orders, etc.
-routes/ – Handles navigation, API endpoints
-views/ – EJS templates for rendering UI
-public/ – Contains stylesheets, scripts, images
+controllers/ – Application logic (chatbot, orders, etc.)
+
+routes/ – Navigation and API endpoints
+
+views/ – EJS templates for UI rendering
+
+public/ – Static assets: stylesheets, scripts, images
+
 app.js – Main server file
 
-
-
 **⚙️ Tech Stack**
-Frontend: EJS, Materialize, JavaScript
-Backend: Node.js, Express.js
-Database: MongoDB
-Utilities: Nodemailer (planned), express-session
-Version Control: Git, GitHub
-Project Management: Trello
-Testing: Manual + automated planned (Mocha/Chai, Cypress)
 
+EJS
+Materialize CSS
+JavaScript
+Node.js
+Express.js
+MongoDB
+express-session
+Git, GitHub (Version Control)
+Trello (Project Management)
 
 **🧪 Testing**
-Manual testing completed for all routes, navigation, and chatbot
-Form field validation tested across login, signup, and checkout
-Real-time chatbot responses tested for keywords
-Trello board used to log testing outcomes
-End-to-end testing implementation is planned
+Manual testing completed for:
+• All routes
+• Navigation
+• Chatbot interactions
 
+Form validations tested across:
+• Login
+• Signup
+• Checkout
+
+Real-time chatbot keyword responses verified
+
+Trello board maintained for test logs
+
+End-to-end testing planned (Mocha/Chai, Cypress)
 
 **🛠️ Setup Instructions**
 Clone the repository
+
 Install dependencies using npm install
-Run MongoDB locally or update DB URI
-Start the server with node app.js or nodemon app.js
 
+Run MongoDB locally or update DB URI in config
 
+Start the server with:
 
+node app.js
 
+or nodemon app.js
