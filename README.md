@@ -49,7 +49,6 @@
   - "Shipping"
   - "Returns"
   - "Shoes under $150"
-- Future enhancement: GPT-powered AI responses
 
 ---
 
@@ -60,7 +59,6 @@
   - Item Name/Number
   - Quantity
   - Total Amount
-- Designed to support future CRUD operations
 
 ---
 
