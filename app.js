@@ -1,26 +1,23 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const app = express();
 const path = require('path');
 
-const app = express();
 
 const http = require('http').createServer(app); // Create HTTP server manually
-const io = require('socket.io')(http);          // Attach Socket.IO
-
 
 // Route imports
-// const pagesRoutes = require('./routes/pagesRoutes');
-// const authRoutes = require('./routes/authRoutes');
-// const shopRoutes = require('./routes/shopRoutes');
-// const cartRoutes = require('./routes/cartRoutes');
-// const chatBotRoutes = require('./routes/chatBotRoute');
+const pagesRoutes = require('./routes/pagesRoutes');
+const authRoutes = require('./routes/authRoutes');
+const shopRoutes = require('./routes/shopRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const chatBotRoutes = require('./routes/chatBotRoute');
 const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
-// const orderRoutes = require('./routes/orderRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const router = express.Router();
-
+const checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst checkoutRoutes = require('./routes/checkout'); // ✅ NEW checkout routeconst http = require('http');
 
 app.use(session({
   secret: 'LaceVista@2025',
@@ -28,20 +25,23 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }));
-app.use(express.json({ limit: '15mb' }));
-app.use(express.urlencoded({ extended: true, limit: '15mb' }));
+
+// Middleware
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// === View Engine & Static Files ===
+// View engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.set(express.static('public'));
+
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/LaceVista', {
-}).then(() => console.log('MongoDB Connected'))
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/LaceVista')
+  .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error(err));
-
 
 // Dummy user (replace in real auth)
 // app.use((req, res, next) => {
@@ -50,11 +50,11 @@ mongoose.connect('mongodb://localhost:27017/LaceVista', {
 // });
 
 router.get('/', cartController.getHomePage); // Home page route
-module.exports = router;
+// module.exports = router;
 
 // Middleware to inject cart count globally
 app.use(async (req, res, next) => {
-  if (!req.session.userId) {
+  if (!req.user) {
     res.locals.cartCount = 0;
     return next();
   }
@@ -62,24 +62,15 @@ app.use(async (req, res, next) => {
   try {
     const cart = await Cart.findOne({ userId: req.session.userId });
     res.locals.cartCount = cart
-      ? cart.items.reduce((sum, item) => sum + item.qty, 0)
+      ? cart.items.reduce((total, item) => total + item.qty, 0)
       : 0;
   } catch (err) {
-    console.error('Cart middleware error:', err);
+    console.error('Cart count middleware error:', err);
     res.locals.cartCount = 0;
   }
-
   next();
 });
 
-// === Routes ===
-const pagesRoutes = require('./routes/pagesRoutes');
-const authRoutes = require('./routes/authRoutes');
-const shopRoutes = require('./routes/shopRoutes');
-const cartRoutes = require('./routes/cartRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-const checkoutRoutes = require('./routes/checkout');
-const chatBotRoutes = require('./routes/chatBotRoute');
 
 // === Mount Routes ===
 app.use('/', authRoutes);
@@ -87,12 +78,16 @@ app.use('/', shopRoutes);
 app.use('/', cartRoutes);
 app.use('/', pagesRoutes);
 app.use('/', orderRoutes);
-app.use('/', checkoutRoutes);
-app.use('/api', chatBotRoutes);
+app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
 
 // === Start Server ===
-const PORT = process.env.PORT || 3000;
-http.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}
+
+// At bottom of app.js
+module.exports = app;
 

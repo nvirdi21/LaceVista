@@ -54,62 +54,25 @@ exports.getSignup = (req, res) => {
   });
 };
 
-// exports.createUser = async (req, res) => {
-//   try {
-//     const { first_name, last_name, email, mobile, password } = req.body;
-
-//     // sanity‐check inputs
-//     if (!first_name || !last_name || !email || !mobile || !password) {
-//       return res.status(400).send('All fields are required');
-//     }
-
-//     // const existingUser = await User.findOne({ email });
-//     // if (existingUser) return res.send('User already exists');
-//     // const hashedPassword = await bcrypt.hash(password, 10);
-
-//     const newUser = new User({
-//       first_name,
-//       last_name,
-//       email,
-//       password,
-//       mobile
-//     });
-
-//     await newUser.save();
-//     // res.send('User registered successfully');
-//     res.render('login', {
-//       title: 'Login',
-//       stylesheet: 'login',
-//       script: 'login'
-//     });
-//   }
-//   catch (err) {
-//     // correctly log the caught error
-//     console.error('Error in createUser:', err);
-//     // send back the actual message in dev, or a generic in prod
-//     res.status(500).send(process.env.NODE_ENV === 'development'
-//       ? `Server Error: ${err.message}`
-//       : 'Server Error');
-//   }
-// };
-
 exports.loginUser = async (req, res) => {
+
   const { email, password } = req.body;
   try {
-    // console.log('Login Input:', req.body);
+   
     const userFind = await User.findOne({ email });
-    // console.log('Login Found:', userFind);
+    
     if (userFind && userFind.password === password) {
-      // console.log('Validated:', userFind.role);
+      
       req.session.user = userFind;
       req.session.userId = userFind._id;
-      // console.log('session login id:', req.session.userId);
+      
       if (userFind.role == "admin") {
         const products = await Product.find();
-        res.render('admin/products', { products });
+        res.redirect('/admin/products');
+       
       }
-      else {
-        res.redirect('shop'); // Redirect to shop or home page
+      else if(userFind.role = "customer"){
+        res.redirect('/shop'); // Redirect to shop or home page
       }
     } else {
       res.render('login', { error: 'Invalid email or password' });
@@ -127,8 +90,7 @@ exports.createUser = async (req, res) => {
   if (!first_name || !last_name || !email || !mobile || !password || !otp)
     return res.status(400).send('All fields including OTP are required');
 
-  // if (req.session.otp !== otp || req.session.emailForOtp !== email)
-  //   return res.status(400).send('Invalid OTP');
+ 
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10); // salt rounds = 10

@@ -417,4 +417,11 @@ footer {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+.order-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 60px; /* to give room below form */
+}
+
 

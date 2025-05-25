@@ -82,7 +82,6 @@
   - Price
   - Stock
   - Actions(edit/delete)
-
 ---
 ## 🧾 Admin Order Panel
 

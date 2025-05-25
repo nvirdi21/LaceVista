@@ -1,6 +1,6 @@
 const Order = require('../models/order');
 const Cart = require('../models/cart');
-
+const Product = require('../models/product'); 
 exports.listOrders = async (req, res) => {
   try {
     const orders = await Order.find({ deleted: false })
@@ -50,6 +50,27 @@ exports.placeOrder = async (req, res) => {
       cvv
     } = req.body;
 
+    // Check stock availability and update stock
+    for (const item of cart.items) {
+      const product = await Product.findById(item.productId);
+
+      if (!product) {
+        return res.status(400).send(`Product not found: ${item.productId}`);
+      }
+
+      if (product.stock < item.qty) {
+        return res.status(400).send(`Insufficient stock for product: ${product.name}`);
+      }
+
+      product.stock -= item.qty;
+      await product.save();
+
+      // Emit stock update event to all connected clients
+      const io = req.app.get('io');
+      io.emit('stockUpdate', { productId: product._id.toString(), newStock: product.stock });
+    }
+
+    // Create order
     const newOrder = new Order({
       userId,
       shoe_length: length,
@@ -73,10 +94,11 @@ exports.placeOrder = async (req, res) => {
 
     res.render('order-success', {
       firstName: user.first_name,
-      lastName: user.last_name 
+      lastName: user.last_name
     });
   } catch (err) {
     console.error('Order Placement Error:', err);
     res.status(500).send('Failed to place order');
   }
 };
+

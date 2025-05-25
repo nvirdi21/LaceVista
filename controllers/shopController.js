@@ -17,6 +17,14 @@ exports.getAllProducts = async (req, res) => {
 
     const products = await Product.find(filter);
 
+    res.render('shop', {
+      title: 'Shop',
+      stylesheet: 'shop',
+      script: 'shop',
+      productList: products,
+      selectedColor: color || '',
+      maxPrice: maxPrice || 999,
+    });
     
   } catch (err) {
     console.error('Error fetching products:', err);
@@ -34,8 +42,8 @@ exports.newForm = (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { name, description, color, price, image } = req.body;
-  await Product.create({ name, description, color, price, image });
+  const { name, description, color, price, stock, image } = req.body;
+  await Product.create({ name, description, color, price, stock, image });
   res.redirect('/admin/products');
 };
 
@@ -45,10 +53,31 @@ exports.editForm = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  const { name, description, color, price, image } = req.body;
-  await Product.findByIdAndUpdate(req.params.id, { name, description, color, price, image });
-  res.redirect('/admin/products');
+  try {
+    const { name, description, color, price, stock, image } = req.body;
+
+    // Update product
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      { name, description, color, price, stock, image },
+      { new: true } // return updated doc
+    );
+
+    if (!updatedProduct) {
+      return res.status(404).send('Product not found');
+    }
+
+    // Emit stock update event to all connected clients
+    const io = req.app.get('io');
+    io.emit('stockUpdate', { productId: updatedProduct._id.toString(), newStock: updatedProduct.stock });
+
+    res.redirect('/admin/products');
+  } catch (err) {
+    console.error('Product Update Error:', err);
+    res.status(500).send('Failed to update product');
+  }
 };
+
 
 exports.delete = async (req, res) => {
   await Product.findByIdAndDelete(req.params.id);

@@ -83,8 +83,6 @@
     <% productList.forEach(item => { %>
     <div class="col s12 m4">
       <div class="card product-card" data-product-id="<%= item._id %>">
-      <div class="card product-card" data-product-id="<%= item._id %>">
-      <div class="card product-card" data-product-id="<%= item._id %>">
         <div class="card-image">
           <img src="<%= item.image %>" alt="<%= item.name %>" />
           <span class="card-title"><%= item.name %></span>
@@ -98,7 +96,7 @@
           <p>All Sizes Available</p>
 
           <a
-            class="btn-small waves-effect waves-light add-to-cart"
+            class="btn-small waves-effect waves-light add-to-cart" data-cy="add-to-cart-button"
             data-id="<%= item._id %>"
           >
             <i class="material-icons">add</i>
@@ -131,5 +129,3 @@
     });
   });
 </script>
-<%- include('footer') %>
-
