@@ -1,7 +1,7 @@
 describe('Men Info Sports Page Tests', () => {
     beforeEach(() => {
       // Use the exact route you found
-      cy.visit('/menInfoSports');
+      cy.visit('http://localhost:3000/menInfoSports');
     });
   
     it('should display the main heading with bold Sports Shoes', () => {

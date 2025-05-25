@@ -1,7 +1,7 @@
 describe('Men Info - Formal Shoes Page', () => {
 
     beforeEach(() => {
-      cy.visit('/menInfoFormals'); // Change path if needed
+      cy.visit('http://localhost:3000/menInfoFormals'); // Change path if needed
     });
   
     it('should load the page successfully', () => {

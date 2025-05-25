@@ -1,6 +1,6 @@
 describe('Heels Collection Page', () => {
     beforeEach(() => {
-      cy.visit('/heels');
+      cy.visit('http://localhost:3000/heels');
     });
   
     it('should load the page and display the hero section', () => {

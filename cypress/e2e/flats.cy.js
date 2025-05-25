@@ -1,6 +1,6 @@
 describe('Flats Collection Page', () => {
     beforeEach(() => {
-      cy.visit('/flats'); // Make sure baseUrl is set in cypress.config.js
+      cy.visit('http://localhost:3000/flats'); // Make sure baseUrl is set in cypress.config.js
     });
   
     it('should load the hero section with correct text', () => {

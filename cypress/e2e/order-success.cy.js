@@ -2,7 +2,7 @@
 
 describe('Signup Page', () => {
     beforeEach(() => {
-      cy.visit('/signup'); // Adjust if your signup URL is different
+      cy.visit('http://localhost:3000/signup'); // Adjust if your signup URL is different
     });
   
     it('should load signup page correctly', () => {

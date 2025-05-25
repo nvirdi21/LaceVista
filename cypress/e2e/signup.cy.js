@@ -1,6 +1,6 @@
 describe('Signup Page', () => {
     beforeEach(() => {
-      cy.visit('/signup'); // or the actual route serving signup.ejs
+      cy.visit('http://localhost:3000/signup'); // or the actual route serving signup.ejs
     });
   
     it('should load the signup page', () => {

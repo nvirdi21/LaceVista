@@ -1,7 +1,7 @@
 describe('Men Info - Sneakers Page', () => {
 
     beforeEach(() => {
-      cy.visit('/menInfoSneakers'); // Adjust if route is different
+      cy.visit('http://localhost:3000/menInfoSneakers'); // Adjust if route is different
     });
   
     it('should load the sneakers page successfully', () => {
