@@ -22,6 +22,9 @@
 - Signup
 - Cart
 - Checkout
+- Men Info - Sneakers
+- Men Info - Sports
+- Men Info - Formals
 
 ---
 
@@ -139,6 +142,12 @@ These tools support behavior-driven development (BDD) and allow writing structur
 - ✅ Checkout Form Submissions
 - ✅ Controller and Route Handling
 
+- ✅ resetInactivityTimeout() – Verifies inactivity timer reset behavior
+- ✅ authController – Tests for rendering login/signup views and sendOtp function
+- ✅ cartController – Ensures getCart is defined and behaves as expected
+- ✅ chatbotController – Confirms handleChat is a valid function
+- ✅ Database Utility – Mocks and validates mongoose.connect() call
+
 ---
 
 ### ✅ Automated UI Testing with Cypress
@@ -155,6 +164,8 @@ Cypress is a next-generation testing tool built specifically for modern web appl
 - ✅ Checkout Process Validation
 - ✅ Admin Dashboard Access
 - ✅ Chatbot Interaction Testing (LaceBot)
+  
+
 
 
 ## 🛠️ Setup Instructions
