@@ -22,10 +22,6 @@
 - Signup
 - Cart
 - Checkout
-- Men Info - Sneakers
-- Men Info - Sports
-- Men Info - Formals
-
 ---
 
 ## 🔐 Authentication
