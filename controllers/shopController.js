@@ -99,3 +99,27 @@ exports.bulkUpdatePrice = async (req, res) => {
     res.status(500).send('Failed to update prices');
   }
 };
+
+exports.getsneakers = (req, res) => {
+  res.render('sneakers', {
+    title: 'sneakers',
+    stylesheet: 'sneakers',
+    script: 'sneakers'
+  });
+}
+
+exports.getheels = (req, res) => {
+  res.render('heels', {
+    title: 'heels',
+    stylesheet: 'heels',
+    script: 'heels'
+  });
+}
+
+exports.getflats = (req, res) => {
+  res.render('flats', {
+    title: 'flats',
+    stylesheet: 'flats',
+    script: 'flats'
+  });
+}

@@ -22,6 +22,13 @@
 - Signup
 - Cart
 - Checkout
+- Men Info - Sneakers
+- Men Info - Sports
+- Men Info - Formals
+- Women Heels Page
+- Sneakers Page
+- Flats Page
+
 ---
 
 ## 🔐 Authentication
@@ -75,7 +82,6 @@
   - Price
   - Stock
   - Actions(edit/delete)
- 
 ---
 ## 🧾 Admin Order Panel
 
@@ -145,6 +151,22 @@ These tools support behavior-driven development (BDD) and allow writing structur
 - ✅ chatbotController – Confirms handleChat is a valid function
 - ✅ Database Utility – Mocks and validates mongoose.connect() call
 
+#### 👨‍🔬 Cypress Tests Written
+
+- ✅ Cart Page – Product interaction and validation
+- ✅ Checkout Process – Input validation and form submission
+- ✅ Heels Page – Rendering, product listing, add-to-cart
+- ✅ Sneakers Page – Rendering, product listing, add-to-cart
+- ✅ Flats Page – Rendering, product listing, add-to-cart
+- ✅ Men Formals Page – Product load and validation
+- ✅ Men Sneakers Page – Product load and validation
+- ✅ Men Sports Page – Product load and validation
+- ✅ Chatbot Interaction – Text input, reply rendering, popup behavior
+- ✅ Login Page – Valid and invalid login attempts
+- ✅ Signup Page – Form validation, OTP field display
+- ✅ Order Success Page – Confirmation display and order data visibility
+
+
 ---
 
 ### ✅ Automated UI Testing with Cypress
@@ -178,5 +200,3 @@ npm install
 
 ### Step 3: Run the Application
 node app.js
-
-

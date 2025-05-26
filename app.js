@@ -4,13 +4,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 
-																			  
-
 // Route imports
 const pagesRoutes = require('./routes/pagesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const shopRoutes = require('./routes/shopRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const chatBotRoutes = require('./routes/chatBotRoute');
 const session = require('express-session'); // session
 const cartController = require('./controllers/cartController');
 const orderRoutes = require('./routes/orderRoutes');

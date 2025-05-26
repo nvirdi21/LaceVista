@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Women's Flats | Trendy Comfort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts & Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/flats.css">
+</head>
+
+<body>
+
+    <%- include('header') %>
+
+        <!-- Hero Section -->
+        <section class="flats-hero center-align">
+            <div class="hero-content-flats">
+                <h1>Walk Your Way</h1>
+                <p>Minimal, chic, and comfortable. Explore our handpicked collection of flats.</p>
+                <a href="#collection" class="btn-flat btn-large white black-text waves-effect">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- Product Grid -->
+        <section id="collection" class="section">
+            <div class="container">
+                <h4 class="center-align">Our Collection</h4>
+                <div class="grid-layout">
+
+                    <% const flats=[ { name: 'Classic Ballet' , image: '/images/flats1.jpg' ,
+                        description: 'Timeless ballet flats with a soft touch.' , price: '$70' }, { name: 'Urban Loafer'
+                        , image: '/images/flats2.jpg' , description: 'Sleek design for everyday wear.' , price: '$85' },
+                        { name: 'Espadrille Vibe' , image: '/images/flats3.jpg' ,
+                        description: 'Lightweight and breathable for warmer days.' , price: '$60' } ]; %>
+
+                        <% flats.forEach((flat, index)=> { %>
+                            <div class="product-card z-depth-1 hoverable">
+                                <div class="product-img">
+                                    <img src="<%= flat.image %>" alt="<%= flat.name %>" class="responsive-img">
+                                </div>
+                                <div class="product-info">
+                                    <h6>
+                                        <%= flat.name %>
+                                    </h6>
+                                    <p>
+                                        <%= flat.description %>
+                                    </p>
+                                    <div class="price">
+                                        <%= flat.price %>
+                                    </div>
+                                    <a class="btn-flat modal-trigger black-text" href="#modal<%= index %>">View</a>
+                                </div>
+                            </div>
+
+                            <!-- Modal Structure -->
+                            <div id="modal<%= index %>" class="modal">
+                                <div class="modal-content center-align">
+                                    <h5>
+                                        <%= flat.name %>
+                                    </h5>
+                                    <img src="<%= flat.image %>" alt="<%= flat.name %>"
+                                        style="max-width: 100%; height: auto; margin: 1rem 0;">
+                                    <p>
+                                        <%= flat.description %>
+                                    </p>
+                                    <p class="price" style="font-weight: bold;">
+                                        <%= flat.price %>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Style Guide Section -->
+        <section class="style-guide white lighten-5">
+            <div class="style-guide">
+                <div class="container">
+                    <h4 class="center-align">How to Style Your Flats</h4>
+                    <div class="row">
+                        <div class="col s12 m4 center-align">
+                            <h6>How 👗</h6>
+                            <p>Pair your flats with cropped jeans, skirts, or linen trousers. Add a tote bag or layered
+                                accessories for a relaxed yet refined look.</p>
+                        </div>
+                        <div class="col s12 m4 center-align">
+                            <h6>When 🕒</h6>
+                            <p>Flats are perfect for brunch dates, workdays, or weekend strolls. Ideal for when you want
+                                both comfort and elegance.</p>
+                        </div>
+                        <div class="col s12 m4 center-align">
+                            <h6>Where 📍</h6>
+                            <p>Style them for the office, casual outings, or even travel. They’re lightweight and easy
+                                to slip on wherever you go.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include('footer') %>
+
+            <!-- Materialize JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const modals = document.querySelectorAll('.modal');
+                    M.Modal.init(modals);
+                });
+            </script>
+</body>
+
+</html>

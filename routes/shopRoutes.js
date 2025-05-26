@@ -13,5 +13,7 @@ router.post('/admin/products', isAdmin, shopController.create);
 router.get('/admin/products/:id/edit', isAdmin, shopController.editForm);
 router.post('/admin/products/:id', isAdmin, shopController.update);
 router.post('/admin/products/:id/delete', isAdmin, shopController.delete);
+router.get('/sneakers', shopController.getsneakers);
+router.get('/heels', shopController.getheels);
 
 module.exports = router;
