@@ -108,6 +108,7 @@
 ### Backend:
 - Node.js
 - Express.js
+- Socket.io
 
 ### Database:
 - MongoDB
