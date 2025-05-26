@@ -79,6 +79,15 @@ app.use('/', pagesRoutes);
 app.use('/', orderRoutes);
 app.use('/', checkoutRoutes); // ✅ Mount the new checkout route
 
+app.get("/api/student", (req, res) => {
+  console.log(" /api/student-running");
+res.json({
+  name: "Navnoor Virdi",
+  studentId: "225219832"  
+});
+});
+
+
 // Start server
 									  
 // const PORT = process.env.PORT || 3000;

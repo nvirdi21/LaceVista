@@ -20,6 +20,7 @@
   },
   "scripts": {
     "test:e2e": "mocha Syed-Jay-E2E-Tests/*.js --timeout 5000",
-    "cytest:e2e": "cypress open"
+    "cytest:e2e": "cypress open",
+    "start": "node app.js"
   }
 }
