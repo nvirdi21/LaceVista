@@ -1,5 +1,39 @@
 # 👟 LaceVista
 
+# LaceVista - Student API 
+Hi, this is my project called **LaceVista**. It is a simple Node.js app that gives student data from an API. I have containerised it using Docker.
+
+Below are the steps to run this using Docker.
+
+---
+
+## How to Build the Image
+
+First, go to the folder where the Dockerfile is (project folder), then run this command in the terminal:
+
+docker build --no-cache -t lacevista .
+
+This will build the image and name it lacevista.
+
+## Run the Container 
+
+Once the image is built, run this command to start the container:
+
+docker run -p 3000:3000 lacevista
+[I am not using any .env file.]
+
+## Access the Port 
+
+After running the container, open browser and go to:
+
+http://localhost:3000/api/student
+
+## Output 
+{"name":"Navnoor Virdi","studentId":"225219832"}
+
+---
+
+
 **LaceVista** is a full-stack e-commerce platform for shoes, built using modern web technologies. It features a dynamic product catalog, responsive design, integrated chatbot assistant, and follows the MVC architecture for maintainability and scalability.
 
 ---
