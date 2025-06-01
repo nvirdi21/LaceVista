@@ -1,10 +1,15 @@
+require('dotenv').config();
+
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
-    setupNodeEvents: (on, config) => {
-      // you can leave this empty or add plugins later
-      return config;
-    },
+    setupNodeEvents(on, config) {
+      // You can access config.env here if needed
+    }
   },
+  env: {
+    apiUrl: process.env.API_URL,
+    apiKey: process.env.API_KEY
+  }
 });

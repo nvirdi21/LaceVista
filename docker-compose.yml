@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: sit725_app
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/mydatabase
+      - JWT_SECRET=LaceVista@1234
+      - API_KEY=your_api_key_here
+      - API_URL=http://localhost:3000
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: sit725_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  cypress:
+    image: cypress/included:12.17.1
+    container_name: sit725_cypress
+    working_dir: /e2e
+    volumes:
+      - ./cypress:/e2e
+      - ./cypress.config.js:/e2e/cypress.config.js
+      - ./package.json:/e2e/package.json
+      - ./node_modules:/e2e/node_modules
+    depends_on:
+      - app
+    environment:
+      - CYPRESS_API_KEY=your_api_key_here
+      - CYPRESS_API_URL=http://app:3000
+    command: ["npx", "cypress", "run"]
+
+volumes:
+  mongo_data:
+
